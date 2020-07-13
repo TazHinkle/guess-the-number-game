@@ -4,18 +4,18 @@ package academy.learnprogramming;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main {
    private final static Logger log = LoggerFactory.getLogger(Main.class);
-   private static final String CONFIG_LOCATION = "beans.xml";
 
    public static void main(String[] args) {
        log.info("Guess the Number Game");
 
        // create context (container)
        ConfigurableApplicationContext context
-               = new ClassPathXmlApplicationContext(CONFIG_LOCATION);
+               = new AnnotationConfigApplicationContext(AppConfig.class);
        //
        NumberGenerator numberGenerator
                = context.getBean(NumberGenerator.class);
@@ -26,7 +26,8 @@ public class Main {
        log.info("number = {}", number);
 
        // get game bean from context (container)
-       Game game = context.getBean(Game.class);
+       Game game
+               = context.getBean(Game.class);
 
        // close context (container)
        context.close();
