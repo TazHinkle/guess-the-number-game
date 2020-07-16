@@ -6,34 +6,46 @@ import org.slf4j.LoggerFactory;
 import javax.annotation.PostConstruct;
 
 public class MessageGeneratorImpl implements MessageGenerator {
-    /*
-    add a logger
-    add a field of type Game and autowire it
-    add a field guessCount (int) and initialize it to 10
-    add a @PostConstruct method and log value of game to confirm it was autowired (not null)
 
-    game: Game
-    guessCount: int
-
-    String getMainMessage();
-    String getResultMessage();
-     */
     private static final Logger log = LoggerFactory.getLogger(MessageGeneratorImpl.class);
     int guessCount = 10;
     @Autowired
     private Game game;
 
+    @PostConstruct
+    public void init() {
+        log.info("game = {}", game);
+    }
+
     @Override
     public String getMainMessage() {
-        log.info("logged the main message");
-        return "here is a message";
+        return "Number is between " +
+                game.getSmallest() +
+                "and " +
+                game.getBiggest() +
+                ". Can you guess it?";
     }
 
-    @PostConstruct
     @Override
     public String getResultMessage() {
-        log.info("logged the result message, and: " + guessCount);
-        return "here is a result message";
+        if (game.isGameWon()) {
+            return "You guess right!  It was " + game.getNumber();
+        }
+        else if (game.isGameLost()) {
+            return "No.  The number was " + game.getNumber();
+        }
+        else if (!game.isValidNumberRange()) {
+            return "Invalid number";
+        }
+        else if (game.getRemainingGuesses() == guessCount) {
+            return "What is your first guess?";
+        }
+        else {
+            String direction = "Lower";
+            if (game.getGuess() < game.getNumber()) {
+                direction = "Higher";
+            }
+            return direction + ". You have " + game.getRemainingGuesses() + " guesses left.";
+        }
     }
-
 }
