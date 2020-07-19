@@ -29,7 +29,7 @@ public class MessageGeneratorImpl implements MessageGenerator {
     @Override
     public String getResultMessage() {
         if (game.isGameWon()) {
-            return "You guess right!  It was " + game.getNumber();
+            return "You guessed right!  It was " + game.getNumber();
         }
         else if (game.isGameLost()) {
             return "No.  The number was " + game.getNumber();
@@ -38,7 +38,7 @@ public class MessageGeneratorImpl implements MessageGenerator {
             return "Invalid number";
         }
         else if (game.getRemainingGuesses() == guessCount) {
-            return "What is your first guess?";
+            return "What is your first guess? ";
         }
         else {
             String direction = "Lower";
