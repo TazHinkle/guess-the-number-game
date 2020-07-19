@@ -1,11 +1,11 @@
 package academy.learnprogramming;
 
 
+import academy.learnprogramming.config.AppConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main {
    private final static Logger log = LoggerFactory.getLogger(Main.class);

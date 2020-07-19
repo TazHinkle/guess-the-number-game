@@ -8,7 +8,7 @@ import javax.annotation.PostConstruct;
 public class MessageGeneratorImpl implements MessageGenerator {
 
     private static final Logger log = LoggerFactory.getLogger(MessageGeneratorImpl.class);
-    int guessCount = 10;
+
     @Autowired
     private Game game;
 
@@ -21,7 +21,7 @@ public class MessageGeneratorImpl implements MessageGenerator {
     public String getMainMessage() {
         return "Number is between " +
                 game.getSmallest() +
-                "and " +
+                " and " +
                 game.getBiggest() +
                 ". Can you guess it?";
     }
@@ -37,7 +37,7 @@ public class MessageGeneratorImpl implements MessageGenerator {
         else if (!game.isValidNumberRange()) {
             return "Invalid number";
         }
-        else if (game.getRemainingGuesses() == guessCount) {
+        else if (game.getRemainingGuesses() == game.getGuessCount()) {
             return "What is your first guess? ";
         }
         else {
@@ -45,7 +45,7 @@ public class MessageGeneratorImpl implements MessageGenerator {
             if (game.getGuess() < game.getNumber()) {
                 direction = "Higher";
             }
-            return direction + ". You have " + game.getRemainingGuesses() + " guesses left.";
+            return direction + ". You have " + game.getRemainingGuesses() + " guesses left. ";
         }
     }
 }
