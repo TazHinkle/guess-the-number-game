@@ -1,5 +1,6 @@
 package academy.learnprogramming;
 
+import academy.learnprogramming.config.MinNumber;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +13,10 @@ public class NumberGeneratorImpl implements NumberGenerator {
     @MaxNumber
     private int maxNumber;
 
+    @Autowired
+    @MinNumber
+    private int minNumber;
+
     // methods
     @Override
     public int next() {
@@ -22,4 +27,10 @@ public class NumberGeneratorImpl implements NumberGenerator {
     public int getMaxNumber() {
         return maxNumber;
     }
+
+    @Override
+    public int getMinNumber() {
+        return minNumber;
+    }
+
 }
