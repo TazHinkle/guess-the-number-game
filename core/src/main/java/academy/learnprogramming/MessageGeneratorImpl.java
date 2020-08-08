@@ -2,15 +2,21 @@ package academy.learnprogramming;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
+@Component
 public class MessageGeneratorImpl implements MessageGenerator {
 
     private static final Logger log = LoggerFactory.getLogger(MessageGeneratorImpl.class);
 
+    private final Game game;
+
     @Autowired
-    private Game game;
+    public MessageGeneratorImpl(Game game) {
+        this.game = game;
+    }
 
     @PostConstruct
     public void init() {

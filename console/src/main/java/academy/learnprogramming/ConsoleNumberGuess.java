@@ -13,11 +13,17 @@ import java.util.Scanner;
 public class ConsoleNumberGuess {
     private static final Logger log = LoggerFactory.getLogger(ConsoleNumberGuess.class);
     // fields
-    @Autowired
-    private Game game;
-    @Autowired
-    private MessageGenerator messageGenerator;
+
+    private final Game game;
+    private final MessageGenerator messageGenerator;
     // events
+
+    @Autowired
+    public ConsoleNumberGuess(Game game, MessageGenerator messageGenerator) {
+        this.game = game;
+        this.messageGenerator = messageGenerator;
+    }
+
     @EventListener (ContextRefreshedEvent.class)
     public void start() {
         log.info("start() -- > Container ready for use.");
