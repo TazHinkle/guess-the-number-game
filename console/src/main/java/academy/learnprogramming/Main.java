@@ -16,25 +16,6 @@ public class Main {
        // create context (container)
        ConfigurableApplicationContext context
                = new AnnotationConfigApplicationContext(AppConfig.class);
-       //
-       NumberGenerator numberGenerator
-               = context.getBean(NumberGenerator.class);
-       // call method next() to get random number
-       int number = numberGenerator.next();
-
-       // log generator number
-       log.info("number = {}", number);
-
-       // get game bean from context (container)
-       Game game
-               = context.getBean(Game.class);
-
-       // get MessageGenerator bean and call both methods.
-       MessageGenerator messageGenerator
-               = context.getBean(MessageGenerator.class);
-       log.info("get main message= {}", messageGenerator.getMainMessage());
-
-       log.info("get result message= {}", messageGenerator.getResultMessage());
 
        // close context (container)
        context.close();

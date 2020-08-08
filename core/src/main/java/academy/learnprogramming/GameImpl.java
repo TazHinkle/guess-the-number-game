@@ -88,6 +88,8 @@ public class GameImpl implements Game{
             if (guess < number) {
                 smallest = guess + 1;
             }
+        } else {
+            System.out.println("Invalid, must be between " + smallest + " and " + biggest);
         }
         remainingGuesses--;
     }
