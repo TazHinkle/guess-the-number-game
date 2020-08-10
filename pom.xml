@@ -22,6 +22,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <annotation-api.version>1.3.2</annotation-api.version>
+        <lombok-version.version>1.18.12</lombok-version.version>
     </properties>
 
     <dependencyManagement>
@@ -46,6 +47,15 @@
                 <artifactId>javax.annotation-api</artifactId>
                 <version>${annotation-api.version}</version>
             </dependency>
+
+<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok-version.version}</version>
+<!--                <scope>provided</scope>-->
+            </dependency>
+
 
         </dependencies>
     </dependencyManagement>
